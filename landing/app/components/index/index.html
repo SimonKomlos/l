@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Main" ng-controller="MainCtrl as ctrl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spark - Responsive Hosting, Domain, Technology HTML Template</title>
+    <!-- main css file -->
+    <link rel="stylesheet" href="../../../css/custom/angular-material.min.css">
+    <link rel="stylesheet" href="../../../css/custom/style.css">
+    <!-- responsive css file -->
+    <link rel="stylesheet" href="../../../css/responsive/responsive.css">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <style ng-repeat="font in ctrl.fontList">
+        @font-face {font-family:"{{font.family}}"; src: url("{{font.url}}");}
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="hosting">
+    <!-- ======= 1.01 Header Area ====== -->
+    <div class="fixedToPage">
+        <header>
+            <div class="headerBottomArea smallerPadding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3 col-xs-9">
+                            <a href="index-1.html" class="logo"><img src="../../../img/leoh.png" alt=""></a>
+                        </div>
+                        <div class="col-md-10 menuCol col-sm-10 col-xs-10">
+                            <nav id="navbarApp" class="navbarApp">
+                                <ul id="nav">
+                                    <li ng-hide="ctrl.stepCount == '5' || ctrl.stepCount == '1'" ng-click="ctrl.back();"><a href="#">Back</a></li>
+                                    <li ng-hide="ctrl.stepCount > '5'" ng-click="ctrl.continue();" class="signUpLi"><a href="#">Continue</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ======= /1.01 Header Area ====== -->
+        <!-- ======= 2.01 Page Title Area ====== -->
+        <div class="pageTitleArea">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="progressElement">
+                            <div ng-class="{'blue': ctrl.stepCount == '1' , 'green': ctrl.stepCount > '1'}" class="circle">
+                                <span ng-if="ctrl.stepCount == '1'">1</span>
+                                <span ng-if="ctrl.stepCount > '1'">
+                                <i class="icofont icofont-check-alt"></i>
+                              </span>
+                            </div>
+                            <div class="h4 statusHeader">Getting Inspiration</div>
+                            <div class="sepLine hidden-xs"></div>
+                        </div>
+                        <div class="progressElement">
+                            <div ng-class="{'blue': ctrl.stepCount == '2' , 'green': ctrl.stepCount > '2', 'gray': ctrl.stepCount < '2'}" class="circle">
+                            <span ng-if="ctrl.stepCount <= '2'">2</span>
+                                <span ng-if="ctrl.stepCount > '2'">
+                                <i class="icofont icofont-check-alt"></i>
+                              </span>
+                            </div>
+                            <div class="h4 statusHeader">Setting logo parameters</div>
+                            <div class="sepLine hidden-xs"></div>
+                        </div>
+                        <div class="progressElement">
+                            <div ng-class="{'blue': ctrl.stepCount == '3' , 'green': ctrl.stepCount > '3', 'gray': ctrl.stepCount < '3'}" class="circle">
+                            <span ng-if="ctrl.stepCount <= '3'">3</span>
+                                <span ng-if="ctrl.stepCount > '3'">
+                                <i class="icofont icofont-check-alt"></i>
+                              </span></div>
+                            <div class="h4 statusHeader">View preliminary logos</div>
+                            <div class="sepLine hidden-xs"></div>
+                        </div>
+                        <div class="progressElement">
+                            <div ng-class="{'blue': ctrl.stepCount == '4' , 'green': ctrl.stepCount > '4', 'gray': ctrl.stepCount < '4'}" class="circle">
+                            <span ng-if="ctrl.stepCount <= '4'">4</span>
+                                <span ng-if="ctrl.stepCount > '4'">
+                                <i class="icofont icofont-check-alt"></i>
+                              </span></div>
+                            <div class="h4 statusHeader">Edit & review</div>
+                            <div class="sepLine hidden-xs"></div>
+                        </div>
+                        <div class="progressElement">
+                            <div ng-class="{'blue': ctrl.stepCount == '5' , 'green': ctrl.stepCount > '5', 'gray': ctrl.stepCount < '5'}" class="circle">
+                            <span ng-if="ctrl.stepCount <= '5'">5</span>
+                                <span ng-if="ctrl.stepCount > '5'">
+                                <i class="icofont icofont-check-alt"></i>
+                              </span></div>
+                            <div class="h4 statusHeader">Finish</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======= /2.01 Page Title Area ====== -->
+    <!-- ======= 4.01 Step Area ====== -->
+    <div ng-if="ctrl.stepCount == '1'" class="stepArea contentArea step1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectionTitle">
+                        <div class="h3">Select a few logos you like...</div>
+                        <p>This will help Leoh in creating a logo you’ll love</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3 selectableLogo">
+                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=300%C3%97300&w=300&h=250" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="ctrl.stepCount == '2'" class="stepArea contentArea step2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectionTitle">
+                        <div class="h3">Specify a few parameters for your logo</div>
+                        <p>Some are optional, some are required (*)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="h4 mainHeader">Branding</div>
+            <p class="specSubheader">General company information</p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <input class="textfield" ng-model="ctrl.text" id="name" name="name" type="text" placeholder="Company Name *">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <input class="textfield" id="name" ng-model="ctrl.slogan" name="name" type="text" placeholder="Company Slogan">
+                </div>
+            </div>
+            <div class="padding-bottom">
+                <p class="specSubheader">Do you already have predefined company colors?</p>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 domainCheck">
+                        <md-checkbox aria-label="Predefined Colors" class="blue" ng-model="preColors">
+                            I have colors for my company
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div class="row" ng-if="preColors">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <input class="textfield color" ng-model="backgroundColor" id="name" name="name" type="text" placeholder="Background Color">
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <input class="textfield color" ng-model="textColor" id="name" name="name" type="text" placeholder="Text Color">
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-top">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="h4 mainHeader">Logo Requirements</div>
+                    <p class="specSubheader">Select one or more typefaces that reflect your company</p>
+                    <div class="typeface" 
+                    ng-click='ctrl.serif = !ctrl.serif; ctrl.typefaceSelected($event)'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/serif.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.sansserif = !ctrl.sansserif; ctrl.typefaceSelected($event); '>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/sans-serif.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.retro = !ctrl.retro; ctrl.typefaceSelected($event);'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/retro.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.handwritten = !ctrl.handwritten; ctrl.typefaceSelected($event);'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/handwritten.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.quirky = !ctrl.quirky; ctrl.typefaceSelected($event);'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/quirky.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.bodacious = !ctrl.bodacious; ctrl.typefaceSelected($event);'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/bodacious.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.future = !ctrl.future; ctrl.typefaceSelected($event);'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/futuristic.png" />
+                    </div>
+                    <div class="typeface" 
+                    ng-click='ctrl.elegant = !ctrl.elegant; ctrl.typefaceSelected($event)'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/elegant.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <p class="specSubheader">Should your logo have an icon? You can select multiple options.</p>
+                    <div class="typeface" 
+                    ng-click='ctrl.textlogo = !ctrl.textlogo; ctrl.typefaceSelected($event)'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/text-logo.png" />
+                    </div>
+                    <div class="typeface"
+                    ng-click='ctrl.texticonlogo = !ctrl.texticonlogo; ctrl.typefaceSelected($event)'>
+                        <md-tooltip>
+                            Authenticity, grace, and elegance
+                        </md-tooltip>
+                        <img src="../../assets/img/icon-text-logo.png" />
+                    </div>
+                   <div class="typeface" ng-click='ctrl.texticonleft = !ctrl.texticonleft; ctrl.typefaceSelected($event)'>
+                      <img src="../../assets/img/retro.png" />
+                  </div>
+                  <div class="typeface" ng-click='ctrl.texticonright = !ctrl.texticonright; ctrl.typefaceSelected($event)'>
+                      <img src="../../assets/img/handwritten.png" />
+                  </div>
+                  <div class="typeface" ng-click='ctrl.texticonabove = !ctrl.texticonabove; ctrl.typefaceSelected($event)'>
+                      <img src="../../assets/img/quirky.png" />
+                  </div>
+                </div>
+            </div>
+            <div ng-show="ctrl.texticonlogo" class="searchIcons">
+                <p class="specSubheader">Search for icons and select the ones you like</p>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <input class="textfield" ng-keydown="$event.which === 13 && ctrl.searchIcons(ctrl.icon)" ng-model="ctrl.icon" id="icons" name="icons" type="text" placeholder="Search Icons (e.g cat, book etc) *">
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-2 searchIconsBtn">
+                        <div ng-click="ctrl.searchIcons(ctrl.icon)" class="priceBtn Btn">Search Iconset</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 iconList">
+                        <div ng-repeat="icon in ctrl.iconObject" class="iconBlock" ng-click="ctrl.removeIconSelected(icon)">
+                          <img ng-src="{{icon.icon_url}}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 iconList">
+                        <img ng-click="ctrl.iconSelected(icon)" ng-repeat="icon in ctrl.icons" ng-src="{{icon.icon_url}}" width="45px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="ctrl.stepCount == '3'" class="stepArea contentArea step3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-centered">
+                    <div class="sectionTitle">
+                        <div class="h3">We've come up with some logos</div>
+                        <p>Flick through them. Each logo will be saved in the category you assign it to. If you see a logo you know is the one, select "This is the one!", otherwise you can edit any logo to make it perfect by clicking "Continue".</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-repeat="font in ctrl.fontList track by $index" ng-if="ctrl.logoCount == $index" class="logoFrame col-xs-12 col-sm-5 col-md-5 col-centered logo{{$index}}">
+                    <svg class="logo" height="100%" width="100%" position="{{font.family}}">
+                      <rect x="0" y="0" width="100%" height="100%"></rect>
+                      <g class="groupLayer">
+                          <use style="display:block" xlink:href="#svg0" x="0" y="-40"/>
+                          <text x="0" y="0" id="companyNameText" font-family="{{font.family}}" font-size="48">{{ctrl.text}}</text>
+                          <text x="0" y="20" id="companySloganText" font-family="{{font.family}}" font-size="16">{{ctrl.slogan}}</text>
+                      </g>
+                      <g class="monogram">
+                          <mask id="rSquare{{$index}}" x="0" y="0" width="34" height="34" maskUnits="userSpaceOnUse">
+                              <rect width="34" height="34" fill="white"/>
+                              <text fill="#000" id="companyMonoText" x="13" y="26" text-anchor="middle" font-family="{{font.family}}" font-size="26">{{ctrl.initials(ctrl.text)}}</text>
+                          </mask>
+                          <!-- <circle mask="url(#rSquare{{$index}})" cx="17" cy="17" r="17" fill="#fff"/> -->
+                          <!-- <rect mask="url(#rSquare{{$index}})" height="34" rx="4" ry="4" width="34" fill="#fff"/> -->
+                          <rect mask="url(#rSquare{{$index}})" height="34" rx="4" ry="4" width="34" fill="#fff"/>
+                      </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-centered">
+                  <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <div class="emotionCount"><span ng-click="ctrl.showLogos($event)">{{ctrl.noEmotion.length}}/{{ctrl.logoCount-1}}
+                        <md-tooltip>
+                            View logos you didn't like
+                        </md-tooltip>
+                      </span></div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <div class="emotionCount"><span>{{ctrl.ehEmotion.length}}/{{ctrl.logoCount-1}}
+                        <md-tooltip>
+                            View logos you thought were okay
+                        </md-tooltip>
+                      </span></div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <div class="emotionCount"><span>{{ctrl.loveEmotion.length}}/{{ctrl.logoCount-1}}
+                        <md-tooltip>
+                            View logos you thought were great
+                        </md-tooltip>
+                      </span></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-centered">
+                  <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <button ng-click="ctrl.emotionNo(ctrl.logoCount); ctrl.logoCount = ctrl.logoCount + 1;" class="emotion no"><span class="emotionText">NO</span>
+                        <md-tooltip>
+                            I don't like this logo
+                        </md-tooltip>
+                      </button>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <button ng-click="ctrl.emotionEh(ctrl.logoCount); ctrl.logoCount = ctrl.logoCount + 1" class="emotion eh"><span class="emotionText">EH</span>
+                      <md-tooltip>
+                            It's okay
+                        </md-tooltip>
+                      </button>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <button ng-click="ctrl.emotionLove(ctrl.logoCount); ctrl.logoCount = ctrl.logoCount + 1" class="emotion love"><i class="icofont icofont-heart"></i>
+                        <md-tooltip>
+                            It's great, but I'd like to see more
+                        </md-tooltip>
+                      </button>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                      <button ng-click="ctrl.emotionPerfect(ctrl.logoCount); ctrl.continue(ctrl.text, ctrl.slogan);" class="emotion perfect"><span class="emotionText">EDIT THIS</span>
+                        <md-tooltip>
+                            No need to see more, this is the one
+                        </md-tooltip>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="svgList">
+        </div>
+    </div>
+    <div ng-if="ctrl.stepCount == '4'" class="stepArea contentArea step4">
+    <div class="pageTitleArea editMenu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 editRow">
+                                <button ng-click="ctrl.editRow('type');" id="editRowType" class="editBtn">Typography & Font</button>
+                            </div>
+                            <div class="col-md-3 editRow">
+                                <button ng-click="ctrl.editRow('pos');" id="editRowPos" class="editBtn">Positioning / Alignment</button>
+                            </div>
+                            <div class="col-md-3 editRow">
+                                <button ng-click="ctrl.editRow('icon');" id="editRowIcon" class="editBtn">Monogram / Icon</button>
+                            </div>
+                            <div class="col-md-3 editRow">
+                                <button ng-click="ctrl.editRow('color');" id="editRowColor" class="editBtn">Colors</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pageTitleArea editTab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                  <md-subheader class="md-no-sticky">Layers</md-subheader>
+                                  <md-list-item class="layerItem" ng-repeat="setting in settings track by $index" ng-class="{'setActiveLayer': $index==0}" id="{{setting.id}}" ng-click="ctrl.setActiveLayer($event, setting.id)">
+                                    <i class="material-icons iconThumbnail">{{setting.icon}}</i>
+                                    <p class="layerText"> {{ setting.name }} </p>
+                                  </md-list-item>
+                            </div>
+                            <div class="col-md-3" ng-if="ctrl.editRowItem == 'type'">
+                                <div class="h4 mainHeader">Edit Typography & Font</div>
+                                <p class="specSubheader">{{ctrl.activeItem}}</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="textfield" ng-model="ctrl.text" id="name" ng-change="ctrl.editUpdate('text', ctrl.activeLayerId)" name="name" type="text" placeholder="Company Name *">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input class="textfield" id="name" ng-change="ctrl.editUpdate('kerning', ctrl.activeLayerId)" ng-model="ctrl.kerning" name="name" type="number" placeholder="kerning">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input class="textfield" id="name" ng-change="ctrl.editUpdate('fontsize', ctrl.activeLayerId)" ng-model="ctrl.fontsize" name="name" type="number" placeholder="Font Size">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" ng-if="ctrl.editRowItem == 'pos'">
+                                <div class="h4 mainHeader">Edit Position / Alignment</div>
+                                <p class="specSubheader">{{ctrl.activeItem}}</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input class="textfield" id="name" ng-change="ctrl.editUpdate('xLoc', ctrl.activeLayerId)" ng-model="ctrl.xLoc" name="name" type="number" placeholder="X Location">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input class="textfield" id="name" ng-change="ctrl.editUpdate('yLoc', ctrl.activeLayerId)" ng-model="ctrl.yLoc" name="name" type="number" placeholder="Y Location">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sectionTitle">
+                        <div ng-if="ctrl.editRowItem == 'pos'" class="gridPattern"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 logo0 confirmedLogo" ng-bind-html="ctrl.toHTML(ctrl.perfectEmotion[0])">{{ctrl.center()}}
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3 selectableLogo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="svgList">
+    </div>
+    </div>
+    <!-- ======= /4.01 Step Area ====== -->
+    <script src="../../../js/angular.min.js"></script>
+    <script src="../../../js/angular-animate.min.js"></script>
+    <script src="../../../js/angular-aria.min.js"></script>
+    <script src="../../../js/angular-messages.min.js"></script>
+    <script src="../../../js/angular-sanitize.min.js"></script>
+    <script src="../../../js/angular-material.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../../js/jquery.1.11.3.min.js"></script>
+    <!-- jQuery -->
+    <script src="../../../js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../../../js/owl.carousel.min.js"></script>
+    <!-- owlCarousel -->
+    <script src="../../../js/waypoints.min.js"></script>
+    <!-- waypoint -->
+    <script src="../../../js/chatScript.js" type="text/javascript"></script>
+    <!--End of Tawk.to Script-->
+    <script src="../../../js/active.js"></script>
+    <!-- active js -->
+    <script src="main-directives.js"></script>
+    <script src="main-services.js"></script>
+    <script src="main-controller.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

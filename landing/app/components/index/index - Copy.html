@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Main" ng-controller="MainCtrl as ctrl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBM FEDExercise</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc4/angular-material.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/css/stylesheet.css" rel="stylesheet" type="text/css">
+    <!-- End of CSS -->
+    <link ng-repeat="font in ctrl.fontList" ng-href="https://fonts.googleapis.com/css?family={{font}}" type:'text/css' rel="stylesheet"/>
+</head>
+
+<body>
+
+
+    <input type="text" ng-model="ctrl.text"/>
+    <input type="text" ng-model="ctrl.icon"/>
+    <button ng-click="ctrl.getIcons(ctrl.icon)">Get Icons</button><br>
+    <md-checkbox ng-model="ctrl.serif" aria-label="Checkbox 1">
+      Serif
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.sansserif" aria-label="Checkbox 1">
+      Sans Serif
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.vintage" aria-label="Checkbox 1">
+      Vintage
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.retro" aria-label="Checkbox 1">
+      Retro
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.handwritten" aria-label="Checkbox 1">
+      Handwritten
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.clean" aria-label="Checkbox 1">
+      Minimalistic
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.quirky" aria-label="Checkbox 1">
+      Quirky
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.bodacious" aria-label="Checkbox 1">
+      Bodacious
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.future" aria-label="Checkbox 1">
+      Futuristic
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.elegant" aria-label="Checkbox 1">
+      Elegant
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.mono" aria-label="Checkbox 1">
+      Mono
+    </md-checkbox><br>
+    <md-checkbox ng-model="ctrl.textlogo" aria-label="Checkbox 1">
+      Just Text
+    </md-checkbox>
+    <md-checkbox ng-model="ctrl.texticonlogo" aria-label="Checkbox 1">
+      Text + Icon
+    </md-checkbox>
+    <div ng-show="ctrl.texticonlogo">
+        <md-checkbox ng-model="ctrl.texticonleft" aria-label="Checkbox 1">
+          Icon Left
+        </md-checkbox>
+        <md-checkbox ng-model="ctrl.texticonabove" aria-label="Checkbox 1">
+          Icon Above
+        </md-checkbox>
+        <md-checkbox ng-model="ctrl.texticonright" aria-label="Checkbox 1">
+          Icon Right
+        </md-checkbox>
+    </div>
+
+    <div>
+        <img ng-repeat="icon in ctrl.icons" ng-src="{{icon.preview_url}}" width="40px"/>
+    </div>
+
+    <div layout="row" layout-wrap layout-padding>
+        <div flex="33" ng-repeat="font in ctrl.userRequestedFonts">
+            <svg height="100%" width="100%" position>
+              <rect x="0" y="0" width="100%" height="100%" fill="#da552f"></rect>
+              <g class="groupLayer">
+                  <image xlink:href="https://d30y9cdsu7xlg0.cloudfront.net/noun-svg/703414.svg?Expires=1482026673&Signature=kE0RA0U0WMCugRkjuISS-NmooyrJXbms~gmH-thnCuglc9kG4608HYXKOXuC8Lh-XsYCWgG76Nf9GQnJJRxaZgwszaSQyJNpwlML-D2h~bAesS4vWzmCjArpEVF2pzGCMjk5lRudTljycFlyJ08Mf4VgxIXAfLYw9MNhj3oGk6k_&Key-Pair-Id=APKAI5ZVHAXN65CHVU2Q" x="0" y="-40" height="50px" width="50px" fill="#fff" stroke="#fff"/>
+                  <text fill="#ffffff" x="0" y="0" font-size="48" font-family="{{font}}">{{ctrl.text}}</text>
+              </g>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc4/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script src="main-directives.js"></script>
+    <script src="main-services.js"></script>
+    <script src="main-controller.js"></script>
+    <script src="app.js"></script>
+    <!-- End of Scripts -->
+</body>
+
+</html>

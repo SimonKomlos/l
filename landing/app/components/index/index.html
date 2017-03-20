@@ -286,10 +286,10 @@
                 </div>
             </div>
             <div class="row">
-                <div ng-repeat="font in ctrl.fontList track by $index" ng-if="ctrl.logoCount == $index" class="logoFrame col-xs-12 col-sm-5 col-md-5 col-centered logo{{$index}}">
+                <div ng-repeat="font in ctrl.fontList track by $index" ng-if="ctrl.logoCount == $index" class="logoFrame col-xs-12 col-sm-6 col-md-6 col-centered logo{{$index}}">
                     <svg class="logo" height="100%" width="100%" position="{{font.family}}">
                       <rect x="0" y="0" width="100%" height="100%"></rect>
-                      <g class="groupLayer">
+                      <g class="groupLayer" fill="{{self.logoColor('text')}}">
                           <use style="display:block" xlink:href="#svg0" x="0" y="-40"/>
                           <text x="0" y="0" id="companyNameText" font-family="{{font.family}}" font-size="48">{{ctrl.text}}</text>
                           <text x="0" y="20" id="companySloganText" font-family="{{font.family}}" font-size="16">{{ctrl.slogan}}</text>
@@ -303,6 +303,11 @@
                           <!-- <rect mask="url(#rSquare{{$index}})" height="34" rx="4" ry="4" width="34" fill="#fff"/> -->
                           <rect mask="url(#rSquare{{$index}})" height="34" rx="4" ry="4" width="34" fill="#fff"/>
                       </g>
+                      <!-- Gradient --> 
+                      <!-- <radialGradient id="rgrad" cx="50%" cy="50%" r="75%" >
+                        <stop offset="0%" style="stop-color:{{ctrl.LightenDarkenColor(ctrl.logoColor('bg'), 20)}};stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:{{ctrl.logoColor('bg')}};stop-opacity:1" />
+                        </radialGradient> -->
                     </svg>
                 </div>
             </div>

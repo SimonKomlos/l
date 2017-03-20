@@ -89,9 +89,8 @@ angular.module('MainController', [
                             $scope.$apply();
                         }
                     }, 400);
-                    for(var i = 0; i < $scope.settings.length; i++) {
-                      self.storedValues.push({
-                      })
+                    for (var i = 0; i < $scope.settings.length; i++) {
+                        self.storedValues.push({})
                     }
                     self.editRow('type');
                 }), 210
@@ -301,6 +300,7 @@ angular.module('MainController', [
                     image.setAttribute("x", ((groupBounds.width - imageWidth) / 2));
                 }
 
+                text.setAttribute("x", (groupBounds.width - textWidth) / 2);
                 group.setAttribute("transform", "translate(" + dx + "," + dy + ")");
                 slogan.setAttribute("x", ((trueGroup - slogan.getBBox().width) / 2));
             }, 200);
@@ -309,10 +309,10 @@ angular.module('MainController', [
         self.editUpdate = function(ev, layerItem) {
             var item = document.getElementById(layerItem);
             var activeNum = 0;
-            for(var i = 0; i < $scope.settings.length; i++) {
-              if($scope.settings[i].id == self.activeId) {
-                activeNum = i;
-              }
+            for (var i = 0; i < $scope.settings.length; i++) {
+                if ($scope.settings[i].id == self.activeId) {
+                    activeNum = i;
+                }
             }
 
             if (ev === "kerning") {
@@ -329,13 +329,13 @@ angular.module('MainController', [
             }
             if (ev === "xLoc") {
                 // if(item.getAttribute('x') == 0) {
-                  item.setAttribute('x', self.xLoc);
+                item.setAttribute('x', self.xLoc);
                 // }
                 self.storedValues[activeNum].xLoc = self.xLoc;
             }
             if (ev === "yLoc") {
                 // if(item.getAttribute('x') == 0) {
-                  item.setAttribute('y', self.yLoc);
+                item.setAttribute('y', self.yLoc);
                 // }
                 self.storedValues[activeNum].yLoc = self.yLoc;
             }
@@ -347,10 +347,10 @@ angular.module('MainController', [
             $(event.path[2]).addClass('setActiveLayer');
 
             var activeNum = 0;
-            for(var i = 0; i < $scope.settings.length; i++) {
-              if($scope.settings[i].id == id) {
-                activeNum = i;
-              }
+            for (var i = 0; i < $scope.settings.length; i++) {
+                if ($scope.settings[i].id == id) {
+                    activeNum = i;
+                }
             }
 
             self.kerning = self.storedValues[activeNum].kerning;
@@ -386,6 +386,25 @@ angular.module('MainController', [
         }
         self.activateLayer();
 
+        self.LightenDarkenColor = function(col, amt) {
+            var usePound = false;
+            if (col[0] == "#") {
+                col = col.slice(1);
+                usePound = true;
+            }
+            var num = parseInt(col, 16);
+            var r = (num >> 16) + amt;
+            if (r > 255) r = 255;
+            else if (r < 0) r = 0;
+            var b = ((num >> 8) & 0x00FF) + amt;
+            if (b > 255) b = 255;
+            else if (b < 0) b = 0;
+            var g = (num & 0x0000FF) + amt;
+            if (g > 255) g = 255;
+            else if (g < 0) g = 0;
+            return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
+        }
+
         self.showLogos = function(ev) {
             $mdDialog.show({
                 templateUrl: 'showLogos.html',
@@ -406,11 +425,11 @@ angular.module('MainController', [
         }
 
         self.editRow = function(item) {
-          var upper = item.charAt(0).toUpperCase() + item.slice(1);
-          $('.editBtn').removeClass('selected');
-          $('#editRow'+upper).addClass('selected');
-          console.log($('#editRow'+upper));
-          self.editRowItem = item;
+            var upper = item.charAt(0).toUpperCase() + item.slice(1);
+            $('.editBtn').removeClass('selected');
+            $('#editRow' + upper).addClass('selected');
+            console.log($('#editRow' + upper));
+            self.editRowItem = item;
         }
 
     });

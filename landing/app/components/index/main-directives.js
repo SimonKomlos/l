@@ -1,25 +1,25 @@
 var app = angular.module('MainDirective', []);
 
-app.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
+app.directive('ngEnter', function() {
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            if (event.which === 13) {
+                scope.$apply(function() {
                     scope.$eval(attrs.ngEnter);
                 });
- 
+
                 event.preventDefault();
             }
         });
     };
 });
 
-app.directive('dynamicModel', ['$compile', '$parse', function ($compile, $parse) {
+app.directive('dynamicModel', ['$compile', '$parse', function($compile, $parse) {
     return {
         restrict: 'A',
         terminal: true,
         priority: 100000,
-        link: function (scope, elem) {
+        link: function(scope, elem) {
             var name = $parse(elem.attr('dynamic-model'))(scope);
             elem.removeAttr('dynamic-model');
             elem.attr('ng-model', name);
@@ -60,8 +60,8 @@ app.directive('position', function() {
                     if (truths >= 2) {
                         rand = Math.floor(Math.random() * 4) + 1;
                         for (var prop in $scope.userOptions.icon_location) {
-                            if(prop != "text_icon_logo") {
-                                if($scope.userOptions.icon_location[prop]) {
+                            if (prop != "text_icon_logo") {
+                                if ($scope.userOptions.icon_location[prop]) {
                                     listOfText.push(prop);
                                 }
                             }
@@ -71,36 +71,45 @@ app.directive('position', function() {
                         console.log(text.getBoundingClientRect().width);
                         console.log(padding);
                         switch (trigger) {
-							case "text_icon_left": text_icon_left(); break;
-							case "text_icon_right": text_icon_right(); break;
-							case "text_icon_above": text_icon_above(); break;
-							case "text_logo": text_logo(); break;
-						}
+                            case "text_icon_left":
+                                text_icon_left();
+                                break;
+                            case "text_icon_right":
+                                text_icon_right();
+                                break;
+                            case "text_icon_above":
+                                text_icon_above();
+                                break;
+                            case "text_logo":
+                                text_logo();
+                                break;
+                        }
                     } else {
-                    	if ($scope.userOptions.icon_location.text_icon_left) {
-                        	text_icon_left();
-                   		} else if ($scope.userOptions.icon_location.text_icon_right) {
-                   			text_icon_right()
-                   		} else if ($scope.userOptions.icon_location.text_icon_above) {
-                   			text_icon_above()
-                   		} else if ($scope.userOptions.icon_location.text_logo) {
-                   			text_logo()
-                   		}
+                        if ($scope.userOptions.icon_location.text_icon_left) {
+                            text_icon_left();
+                        } else if ($scope.userOptions.icon_location.text_icon_right) {
+                            text_icon_right()
+                        } else if ($scope.userOptions.icon_location.text_icon_above) {
+                            text_icon_above()
+                        } else if ($scope.userOptions.icon_location.text_logo) {
+                            text_logo()
+                        }
                     }
+
                     function text_icon_left() {
-                    	trueGroup = textgap + textWidth + imageWidth;
+                        trueGroup = textgap + textWidth + imageWidth;
                         monogram.remove();
                         groupPosX = (svgBounds.width - trueGroup) / 2;
-						groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height /3
+                        groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height / 3
                         text.setAttribute("x", textgap);
                         svg.setAttribute("type", "text_icon_left");
                     }
 
                     function text_icon_right() {
-                    	trueGroup = textgap + textWidth + imageWidth;
+                        trueGroup = textgap + textWidth + imageWidth;
                         monogram.remove();
                         groupPosX = (svgBounds.width - trueGroup) / 2;
-						groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height /3
+                        groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height / 3
                         image.setAttribute("x", imagegap);
                         svg.setAttribute("type", "text_icon_right");
                     }
@@ -108,7 +117,7 @@ app.directive('position', function() {
                     function text_icon_above() {
                         trueGroup = groupBounds.width;
                         groupPosX = (svgBounds.width - trueGroup) / 2;
-						groupPosY = (svgBounds.height - groupBounds.height) / 2;
+                        groupPosY = (svgBounds.height - groupBounds.height) / 2;
                         monogram.remove();
 
                         text.setAttribute("y", 30);
@@ -120,15 +129,15 @@ app.directive('position', function() {
 
                     function text_logo() {
                         var chance = Math.floor(Math.random() * 4) + 1;
-                        if(chance === 1) {
+                        if (chance === 1) {
                             groupPosY = (svgBounds.height - groupBounds.height) / 2;
                             var monox = (svgBounds.width - monogram.getBBox().width) / 2;
-                            monogram.setAttribute("transform", "translate(" + monox + "," + ((groupPosY-groupBounds.y)-80) + ")");
+                            monogram.setAttribute("transform", "translate(" + monox + "," + ((groupPosY - groupBounds.y) - 80) + ")");
                             monoText.setAttribute("x", 17);
                             groupPosY = (svgBounds.height - groupBounds.height) / 2;
                         } else {
                             monogram.remove();
-                            groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height /3;
+                            groupPosY = ((svgBounds.height - groupBounds.height) / 2) - groupBounds.height / 3;
                         }
                         console.log(chance);
 
@@ -139,31 +148,40 @@ app.directive('position', function() {
                     }
 
                     self.colorArray = ["#ff7473", "#fdb813", "#288feb", "#47b8e0", "#34314c",
-                    "#519D9E", "#ff5f2e", "#004e66"]
+                        "#519D9E", "#ff5f2e", "#004e66"
+                    ]
                     self.logoColor = function(item) {
-                      if(item == "bg") {
-                        if($scope.preColors) {
-                          return $scope.backgroundColor;
+                        if (item == "bg") {
+                            if ($scope.preColors) {
+                                return $scope.backgroundColor;
+                            } else {
+                                return self.colorArray[Math.floor(Math.random() * self.colorArray.length) + 0];
+                            }
                         } else {
-                          return self.colorArray[Math.floor(Math.random() * self.colorArray.length) + 0];
+                            if ($scope.preColors) {
+                                return $scope.textColor;
+                            } else {
+                                return "#fff";
+                            }
                         }
-                      } else {
-                        if($scope.preColors) {
-                          return $scope.textColor;
-                        } else {
-                          return "#fff";
-                        }
-                      }
                     }
 
                     rect.setAttribute("fill", self.logoColor("bg"));
+                    // svg.setAttribute("fill", self.logoColor("bg"));
+                    // rect.setAttribute("fill", "url(#rgrad)");
+                    // $('.logo').append('<radialGradient id="rgrad" cx="50%" cy="50%" r="75%" >\
+                    //     <stop offset="0%" style="stop-color:'+ LightenDarkenColor(self.logoColor("bg"), 20) +';stop-opacity:1" />\
+                    //     <stop offset="100%" style="stop-color:' + self.logoColor("bg") + ';stop-opacity:1" />\
+                    //     </radialGradient>');
+
                     group.setAttribute("fill", self.logoColor("text"));
 
                     var dx = groupPosX;
                     var dy = groupPosY - groupBounds.y;
                     console.log(groupPosY);
+                    text.setAttribute("x", (groupBounds.width - textWidth) / 2);
                     group.setAttribute("transform", "translate(" + dx + "," + dy + ")");
-                    slogan.setAttribute("x", (trueGroup - slogan.getBBox().width)/2);
+                    slogan.setAttribute("x", (trueGroup - slogan.getBBox().width) / 2);
                 }, 200);
             });
         }
